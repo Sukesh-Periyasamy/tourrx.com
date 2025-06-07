@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/indiando/tourrx.com/
+- rsync -a --exclude='.git/' /home/indiando/tourrx-repo/ /home/indiando/tourrx.com/
     - /bin/cp index*.html $DEPLOYPATH
     - /bin/cp xmlrpcdisable.php $DEPLOYPATH
     - /bin/cp -R about $DEPLOYPATH
