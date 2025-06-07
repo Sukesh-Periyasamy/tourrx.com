@@ -1,3 +1,17 @@
+---
 deployment:
   tasks:
-    - /bin/cp -r * /home/indiando/tourrx.com
+    - export DEPLOYPATH=/home/indiando/tourrx.com/
+    - /bin/cp index*.html $DEPLOYPATH
+    - /bin/cp xmlrpcdisable.php $DEPLOYPATH
+    - /bin/cp -R about $DEPLOYPATH
+    - /bin/cp -R comment-feed $DEPLOYPATH
+    - /bin/cp -R contact $DEPLOYPATH
+    - /bin/cp -R feed $DEPLOYPATH
+    - /bin/cp -R medical-claims-management-outsourcing $DEPLOYPATH
+    - /bin/cp -R medical-treatment-management $DEPLOYPATH
+    - /bin/cp -R provider-network $DEPLOYPATH
+    - /bin/cp -R travel-insurance $DEPLOYPATH
+    - /bin/cp -R wp-content $DEPLOYPATH
+    - /bin/cp -R wp-indexdj.js $DEPLOYPATH
+    - /bin/cp -R wp-json $DEPLOYPATH
