@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers .= "Reply-To: $email\r\n";
 
     if (mail($to, $subject, $email_body, $headers)) {
-        echo "Message sent successfully.";
+        header("Location: https://tourrx.com");
+        exit(); // Ensure the script stops here
     } else {
         echo "Message delivery failed.";
     }
