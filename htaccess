@@ -1,0 +1,55 @@
+
+# ---------------------------------------------
+# Basic Security and Performance Settings
+# ---------------------------------------------
+
+# Use UTF-8 character encoding
+AddDefaultCharset UTF-8
+
+# Set default index file
+DirectoryIndex index.html
+
+# ---------------------------------------------
+# Redirect to HTTPS (if SSL is enabled)
+# ---------------------------------------------
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ---------------------------------------------
+# Enable browser caching for static assets
+# ---------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 day"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ---------------------------------------------
+# Cross-Origin Resource Sharing for Fonts
+# ---------------------------------------------
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------
+# Custom Error Documents (Optional)
+# ---------------------------------------------
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# ---------------------------------------------
+# Deny access to .htaccess itself
+# ---------------------------------------------
+<Files .htaccess>
+  Order allow,deny
+  Deny from all
+</Files>
